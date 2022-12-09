@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:11:27 by rburgsta          #+#    #+#              #
-#    Updated: 2022/10/28 02:02:29 by rburgsta         ###   ########.fr        #
+#    Updated: 2022/10/29 00:01:18 by rburgsta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-LIBFT = ./libft/libft.a
+LIBFT_PATH = ./libft/
 SOURCE = ft_printf.c \
 		 ft_printf_char.c \
 		 ft_printf_str.c \
@@ -24,11 +24,11 @@ all : $(NAME)
 
 bonus : $(NAME)
 
-$(NAME) : $(OBJECT) $(LIBFT)
+$(NAME) : $(OBJECT) $(LIBFT_PATH)*.o
 	ar -rcs $(NAME) $?
 
-$(LIBFT) :
-	make -C $(LIBFT)
+$(LIBFT_PATH)*.o :
+	make -C $(LIBFT_PATH)
 
 %.o : %.c
 	cc -c -Wall -Wextra -Werror $^
