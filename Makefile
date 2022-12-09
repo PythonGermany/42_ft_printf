@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+         #
+#    By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:11:27 by rburgsta          #+#    #+#              #
-#    Updated: 2022/10/25 13:51:56 by rburgsta         ###   ########.fr        #
+#    Updated: 2022/10/28 02:01:21 by rburgsta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(LIBFT)*.o :
 	cc -c -Wall -Wextra -Werror $^
 
 clean :
-	rm -f *.o
+	rm -f $(OBJECT)
 
 fclean : clean
 	rm -f $(NAME)
