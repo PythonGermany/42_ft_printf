@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:15:45 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/10/20 15:15:45 by rburgsta         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:26:56 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <stdlib.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "libft/libft.h"
 
 static void	print_param2(char c, va_list ap, int *len, char *flags)

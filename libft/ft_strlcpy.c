@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_flags.c                                  :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 18:40:42 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:22 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/13 10:43:44 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/18 15:55:06 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <stddef.h>
 
-int	ft_printf_flags(char *format, char **flags)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (ft_strchr("-0.# +", format[i]) && format[i])
+	while (dstsize > 1 && i < dstsize - 1 && src[i])
+	{
+		dst[i] = src[i];
 		i++;
-	*flags = ft_substr((char const *)format, 0, i);
+	}
+	if (dstsize > 0)
+		dst[i] = 0;
+	while (src[i])
+		i++;
 	return (i);
 }

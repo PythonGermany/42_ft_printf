@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:13:20 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:35 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/14 14:54:49 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/14 15:32:19 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <unistd.h>
 
-int	ft_printf_ptr(void *ptr)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	len;
+	char	c;
 
-	len = 0;
-	ft_putstr_fd("0x", 1);
-	len += 2;
-	ft_putnbrul((unsigned long int)ptr, "0123456789abcdef", &len);
-	return (len);
+	c = n % 10 + '0';
+	if (n < 0)
+	{
+		write(fd, &"-", 1);
+		c = -(n % -10) + '0';
+		if (n / 10 < 0)
+			ft_putnbr_fd(-(n / 10), fd);
+	}
+	if (n / 10 > 0)
+		ft_putnbr_fd(n / 10, fd);
+	write(fd, &c, 1);
 }

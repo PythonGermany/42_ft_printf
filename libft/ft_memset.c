@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:13:20 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:35 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/11 16:19:53 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/18 15:21:54 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <stddef.h>
 
-int	ft_printf_ptr(void *ptr)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	len;
-
-	len = 0;
-	ft_putstr_fd("0x", 1);
-	len += 2;
-	ft_putnbrul((unsigned long int)ptr, "0123456789abcdef", &len);
-	return (len);
+	while (len > 0)
+		*((unsigned char *)b + --len) = (unsigned char)c;
+	return (b);
 }

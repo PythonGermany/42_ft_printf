@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:13:20 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:35 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/11 17:37:33 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/19 11:49:10 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <stddef.h>
 
-int	ft_printf_ptr(void *ptr)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	len;
+	size_t	i;
 
-	len = 0;
-	ft_putstr_fd("0x", 1);
-	len += 2;
-	ft_putnbrul((unsigned long int)ptr, "0123456789abcdef", &len);
-	return (len);
+	if ((!dst && !src) || ((!dst || !src) && !len))
+		return (dst);
+	if (dst < src)
+	{
+		i = 0;
+		while (i < len)
+		{
+			*((unsigned char *)dst + i) = *((unsigned char *)src + i);
+			i++;
+		}
+	}
+	else
+	{
+		i = len;
+		while (i-- > 0)
+			*((unsigned char *)dst + i) = *((unsigned char *)src + i);
+	}
+	return (dst);
 }

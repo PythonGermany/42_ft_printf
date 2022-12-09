@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:13:20 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:35 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/14 14:40:36 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/14 14:45:27 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <unistd.h>
 
-int	ft_printf_ptr(void *ptr)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	ft_putstr_fd("0x", 1);
-	len += 2;
-	ft_putnbrul((unsigned long int)ptr, "0123456789abcdef", &len);
-	return (len);
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+			i++;
+		write(fd, s, i);
+	}
 }

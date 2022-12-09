@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 16:30:39 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/10/20 16:30:39 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/14 11:46:59 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/18 15:24:52 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include <stdlib.h>
 
-int		ft_printf(const char *, ...);
-int		ft_printf_char(char c);
-int		ft_printf_str(char *str);
-int		ft_printf_ptr(void *ptr);
-int		ft_printf_flags(char *format, char **flags);
-void	ft_putnbrl(long int n, char *base, int *ln);
-void	ft_putnbrul(unsigned long int n, char *base, int *ln);
-void	ft_putnbru(unsigned int n, char *base, int *ln);
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*ptr;
 
-#endif
+	i = 0;
+	while (s1[i])
+		i++;
+	ptr = (char *)malloc(i + 1);
+	if (ptr)
+	{
+		while (i >= 0)
+		{
+			ptr[i] = s1[i];
+			i--;
+		}
+	}
+	return (ptr);
+}

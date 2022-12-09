@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 16:13:20 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:35 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/11 16:46:00 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/19 09:59:35 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <stddef.h>
 
-int	ft_printf_ptr(void *ptr)
+void	ft_bzero(void *s, size_t n)
 {
-	int	len;
-
-	len = 0;
-	ft_putstr_fd("0x", 1);
-	len += 2;
-	ft_putnbrul((unsigned long int)ptr, "0123456789abcdef", &len);
-	return (len);
+	while (n > 0)
+		*((unsigned char *)s + --n) = 0;
 }

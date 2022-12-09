@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_flags.c                                  :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 18:40:42 by rburgsta          #+#    #+#             */
-/*   Updated: 2022/11/15 14:43:22 by rburgsta         ###   ########.fr       */
+/*   Created: 2022/10/13 11:37:32 by rburgsta          #+#    #+#             */
+/*   Updated: 2022/10/19 14:13:11 by rburgsta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include <stddef.h>
 
-int	ft_printf_flags(char *format, char **flags)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
+	size_t	i;
+	size_t	i2;
 
 	i = 0;
-	while (ft_strchr("-0.# +", format[i]) && format[i])
+	i2 = 0;
+	if (!dstsize)
+	{
+		while (src[i2])
+			i2++;
+		return (i2);
+	}
+	while (dst[i] && i < dstsize)
 		i++;
-	*flags = ft_substr((char const *)format, 0, i);
-	return (i);
+	while (dstsize > 1 && i + i2 < dstsize - 1 && src[i2])
+	{
+		dst[i + i2] = src[i2];
+		i2++;
+	}
+	if (dstsize > 0 && i < dstsize)
+		dst[i + i2] = 0;
+	while (src[i2])
+		i2++;
+	return (i + i2);
 }
