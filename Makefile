@@ -6,12 +6,12 @@
 #    By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:11:27 by rburgsta          #+#    #+#              #
-#    Updated: 2022/10/28 02:01:21 by rburgsta         ###   ########.fr        #
+#    Updated: 2022/10/28 02:02:29 by rburgsta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-LIBFT = ./libft/
+LIBFT = ./libft/libft.a
 SOURCE = ft_printf.c \
 		 ft_printf_char.c \
 		 ft_printf_str.c \
@@ -24,10 +24,10 @@ all : $(NAME)
 
 bonus : $(NAME)
 
-$(NAME) : $(OBJECT) $(LIBFT)*.o
+$(NAME) : $(OBJECT) $(LIBFT)
 	ar -rcs $(NAME) $?
 
-$(LIBFT)*.o :
+$(LIBFT) :
 	make -C $(LIBFT)
 
 %.o : %.c
