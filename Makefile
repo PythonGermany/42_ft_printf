@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rburgsta <rburgsta@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rburgsta <rburgsta@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 18:11:27 by rburgsta          #+#    #+#              #
-#    Updated: 2022/10/22 18:11:27 by rburgsta         ###   ########.fr        #
+#    Updated: 2022/10/25 13:51:56 by rburgsta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ OBJECT = $(SOURCE:%.c=%.o)
 
 all : $(NAME)
 
-bonus : all
+bonus : $(NAME)
 
 $(NAME) : $(OBJECT) $(LIBFT)*.o
-	ar -rc $(NAME) $?
+	ar -rcs $(NAME) $?
 
 $(LIBFT)*.o :
 	make -C $(LIBFT)
